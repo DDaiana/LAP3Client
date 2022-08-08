@@ -1,6 +1,6 @@
 const initialState = {
-    number: '',
-    category: '',
+    number: '10',
+    category: '9',
     difficulty: 'easy'
 }
 
