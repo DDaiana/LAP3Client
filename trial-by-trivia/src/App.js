@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { Profile, Categories, Difficulty, Game, Score } from './pages';
+import { Routes, Route} from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/* <Profile />  */}
+
+        <Routes>
+            {/* add the Layout as a parent for the rest of the elements - ensure that the layout uses outlet in order to display the child's content*/}
+                      
+              <Route path="/" element={<Profile />}> </Route>
+              <Route path="/categories" element={<Categories />}> </Route>
+              <Route path="/difficulty" element={<Difficulty />}> </Route>
+              <Route path="/game" element={<Game />}> </Route> 
+              <Route path="/score" element={<Score />}> </Route>               
+          
+         </Routes>
       </header>
+      
     </div>
   );
 }
