@@ -11,8 +11,11 @@ export default function Game() {
     const difficulty = useSelector(state => state.difficulty);
     const number = useSelector(state => state.number);
 
+    const currentQuestion = useSelector(state => state.question);
+
+
+    let [isLoaded, setIsLoaded] = useState(false)
     let [results, setResults] = useState([])
-    let [currentQuestion, setCurrentQuestion] = useState("")
 
  
  
@@ -20,6 +23,7 @@ export default function Game() {
     async function fetchData() {
       const results = await fetchQuiz(category, difficulty, number) 
       setResults(results)
+      setIsLoaded(true)
       return results
     }
     fetchData();
@@ -35,21 +39,27 @@ export default function Game() {
       navigate('/score')
     }
 
+    const runGame = () => {
+      return(
+      <Question currentQuestion={1} results = {results}/>)
+    }
+
 
 
 
   return (
     <div>Game
-      {Array.isArray(results) ? 
-      results.map(item => <h2>{item.question}</h2>):
+      {isLoaded == true ? 
+       runGame():
       null}
       {/* {results.map(item => item.question)} */}
 {/* 
     <View>
       <Text>{!data.length ? 'Loading...' : data[0].name}</Text>
-    </View> */}
+    // </View> */}
+ {/* <Question currentQuestion={1} results = {results}/> */}
 
-      {/* <Question currentQuestion={1} results = {results}/> */}
+    
     </div>
   )
 }

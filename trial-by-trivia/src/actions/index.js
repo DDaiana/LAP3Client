@@ -27,6 +27,7 @@ export async function fetchQuiz(category, difficulty, number){
         const url = `https://opentdb.com/api.php?amount=${number}&category=${category}&difficulty=${difficulty}&type=multiple`
         try {
             let data = await axios.get(url)
+            console.log(url)
             console.log(data)
             const quizData = data.data.results
             console.log(quizData)
