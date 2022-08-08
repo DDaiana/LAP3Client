@@ -12,8 +12,7 @@ function App() {
               <Route path="/categories" element={<Categories />}> </Route>
               <Route path="/difficulty" element={<Difficulty />}> </Route>
               <Route path="/game" element={<Game />}> </Route> 
-              <Route path="/score" element={<Score />}> </Route>               
-          
+              <Route path="/score" element={<Score />}> </Route>  
          </Routes>
       </header>
       
