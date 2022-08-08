@@ -1,9 +1,13 @@
 import React from 'react';
+import { useDispatch } from "react-redux";
+import { questionAction } from "../../actions";
 
 export default function Question({currentQuestion, results}) {
     console.log("RESULTS INSIDE QUESTION")
     console.log(results)
     console.log("RESULTS INSIDE QUESTION")
+
+    const dispatch = useDispatch();
 
     console.log("RESULTS  ",results[currentQuestion-1].incorrect_answers)
     let answers = results[currentQuestion-1].incorrect_answers 
@@ -14,7 +18,7 @@ export default function Question({currentQuestion, results}) {
     });
 
     const handleClick = () => {
-        // setCurrentQuestion(prev => prev + 1)
+        dispatch(questionAction())
     }
 
     return (

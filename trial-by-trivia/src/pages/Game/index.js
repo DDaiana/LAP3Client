@@ -7,11 +7,11 @@ import  Question  from '../../components/Question';
 
 export default function Game() {
 
-    const category = useSelector(state => state.category);
-    const difficulty = useSelector(state => state.difficulty);
-    const number = useSelector(state => state.number);
+    const category = useSelector(state => state.mainReducer.category);
+    const difficulty = useSelector(state => state.mainReducer.difficulty);
+    const number = useSelector(state => state.mainReducer.number);
 
-    const currentQuestion = useSelector(state => state.question);
+    const currentQuestion = useSelector(state => state.questionReducer.question);
 
 
     let [isLoaded, setIsLoaded] = useState(false)
@@ -41,7 +41,7 @@ export default function Game() {
 
     const runGame = () => {
       return(
-      <Question currentQuestion={1} results = {results}/>)
+      <Question currentQuestion={currentQuestion} results = {results}/>)
     }
 
 

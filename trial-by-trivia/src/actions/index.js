@@ -21,6 +21,13 @@ export function difficultyAction(diff) {
     }
 }
 
+export function questionAction(){
+    return{
+        type: "ADD",
+        payload: 1
+    }
+}
+
 export async function fetchQuiz(category, difficulty, number){
         console.log("INSIDE FETCH FUNCTION")
         console.log(category, difficulty, number)

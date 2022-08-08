@@ -6,12 +6,12 @@ import { numberAction, difficultyAction } from "../../actions";
 export default function Difficulty() {
   
   const difficulty = useSelector((state) => {
-    console.log("STATE IS ",state)
-    return state.difficulty});
+    console.log("STATE IS ",state.mainReducer.difficulty)
+    return state.mainReducer.difficulty});
 
   const number = useSelector((state) => {
-    console.log("STATE IS ",state)
-    return state.number});
+    console.log("STATE IS ",state.mainReducer.number)
+    return state.mainReducer.number});
 
   const dispatch = useDispatch();
 
