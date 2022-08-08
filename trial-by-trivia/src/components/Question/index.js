@@ -18,7 +18,7 @@ export default function Question({currentQuestion, results}) {
     });
 
     const handleClick = () => {
-        dispatch(questionAction())
+        dispatch(questionAction());
     }
 
     return (
