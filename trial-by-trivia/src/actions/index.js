@@ -1,18 +1,18 @@
-export const category = (name) => {
+export function categoryAction(name) {
     return { 
         type: "CATEGORY",
         payload: name
     }
 }
 
-export const number = (num) => {
+export function numberAction(num) {
     return { 
         type: "NUMBER",
         payload: num
     }
 }
 
-export const difficulty = (diff) => {
+export function difficultyAction(diff) {
     return { 
         type: "DIFFICULTY",
         payload: diff
