@@ -3,20 +3,24 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Categories() {
     let [category, setCategory] = useState("");
+
     let navigate = useNavigate() ;
-    const navigateToDifficulty = (e) => {
-        // setCategory = e.target.textContent;
-        // console.log(setCategory);
-        console.log(e.target.value);
-    // navigate('/difficulty')
-  }
+    const navigateToDifficulty = () => {
+      navigate('/difficulty')
+    }
+
+    const handleCategory = ( e) => {
+      console.log('target: ' +  e.target.innerText)
+    }
+
   
   return (
     <div>Categories
-      <button value="Animals" onClick={(e) => navigateToDifficulty(e)}>Animals</button>
-      <button onClick={navigateToDifficulty("science")}>Science</button>
-      <button onClick={navigateToDifficulty("food")}>Food</button>
-      <button onClick={navigateToDifficulty("celebrities")}>Celebs</button>
+      <button value="Animals" onClick={navigateToDifficulty}>Difficulty</button>
+      <button onClick={(e) => handleCategory(e)}>Music</button>
+      <button onClick={(e) => handleCategory(e)}>Science</button>
+      <button onClick={(e) => handleCategory(e)}>Food</button>
+      <button onClick={(e) => handleCategory(e)}>Celebs</button>
     </div>
   )
 }
