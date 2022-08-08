@@ -1,13 +1,15 @@
 const initialState = {
-    number: 0,
+    number: '',
     category: '',
-    difficulty: ''
+    difficulty: 'easy'
 }
 
 const mainReducer = (state = initialState, action) => {
+    console.log("REDUCER")
+    console.log(action)
     switch (action.type) {
-        case "NUM":
-            return {...state, number: state.number + action.payload}
+        case "NUMBER":
+            return {...state, number: action.payload}
         case "CATEGORY":
             return {...state, category: action.payload}
         case "DIFFICULTY":
