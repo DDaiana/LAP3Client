@@ -1,15 +1,25 @@
 import React from 'react';
+import { useDispatch } from "react-redux";
+import { questionAction } from "../../actions";
 
 export default function Question({currentQuestion, results}) {
     console.log("RESULTS INSIDE QUESTION")
     console.log(results)
     console.log("RESULTS INSIDE QUESTION")
 
-    let answers = results.incorrect_answers.push(results.correct_answer)
+    const dispatch = useDispatch();
 
+    console.log("RESULTS  ",results[currentQuestion-1].incorrect_answers)
+    let answers = results[currentQuestion-1].incorrect_answers 
+    answers.push(results[currentQuestion-1].correct_answer)
+    console.log(answers)
     let randomAnswers = answers.sort(function () {
         return Math.random() - 0.5;
     });
+
+    const handleClick = () => {
+        dispatch(questionAction());
+    }
 
     return (
         <div>
@@ -21,7 +31,7 @@ export default function Question({currentQuestion, results}) {
 					</div>
 					<div className='answer-section'>
 						{randomAnswers.map((item) => (
-							<button>{item}</button>
+							<button onClick={handleClick}>{item}</button>
 						))}
 			</div>
         </div>

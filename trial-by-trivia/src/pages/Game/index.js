@@ -1,49 +1,37 @@
 import React, {useEffect, useState} from 'react';
 import { useNavigate} from 'react-router-dom';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import {fetchQuiz} from '../../actions';
 import  Question  from '../../components/Question';
 
 
 export default function Game() {
 
-    const category = useSelector(state => state.category);
-    const difficulty = useSelector(state => state.difficulty);
-    const number = useSelector(state => state.number);
+    const category = useSelector(state => state.mainReducer.category);
+    const difficulty = useSelector(state => state.mainReducer.difficulty);
+    const number = useSelector(state => state.mainReducer.number);
 
-    const dispatch = useDispatch();
+    const currentQuestion = useSelector(state => state.questionReducer.question);
 
-    // useEffect( async () => {
-    //   const results =  await fetchQuiz(category, difficulty, number)
-    // },[])
 
-    let [results, setResults] = useState("")
-    let [currentQuestion, setCurrentQuestion] = useState("")
+    let [isLoaded, setIsLoaded] = useState(false)
+    let [results, setResults] = useState([])
 
-    // useEffect( () => {
-    //   async function fetchData(category, difficulty, number) {
-    //     const resultsData = await fetchQuiz(category, difficulty, number)
-    //     setResults(resultsData[0])
-    //     setCurrentQuestion(resultsData[0].question)
-    //   }
-    //   fetchData();
-    // }, [])
-  
-  // async function fetchCall(){
-  //   console.log("FETCH")
-  //   const resultsData = await fetchQuiz(category, difficulty, number)
-  //   console.log("FETCH DONE")
-  //   setResults(resultsData[0])
-  //   console.log("STATE CHANGE DONE")
-  // }
-    // const resultsData = await fetchQuiz(category, difficulty, number)
-    //     setResults(resultsData[0])
-
+ 
+ 
   useEffect(()=>{
-    dispatch(fetchQuiz(category, difficulty, number))
-    console.log(results)
-  },[])
+    async function fetchData() {
+      const results = await fetchQuiz(category, difficulty, number) 
+      setResults(results)
+      setIsLoaded(true)
+      return results
+    }
+    fetchData();
+  },[]);
 
+
+
+    console.log(results)
 
 
     let navigate = useNavigate() ;
@@ -51,17 +39,27 @@ export default function Game() {
       navigate('/score')
     }
 
+    const runGame = () => {
+      return(
+      <Question currentQuestion={currentQuestion} results = {results}/>)
+    }
+
 
 
 
   return (
     <div>Game
+      {isLoaded == true ? 
+       runGame():
+      null}
+      {/* {results.map(item => item.question)} */}
 {/* 
     <View>
       <Text>{!data.length ? 'Loading...' : data[0].name}</Text>
-    </View> */}
+    // </View> */}
+ {/* <Question currentQuestion={1} results = {results}/> */}
 
-      {/* <Question currentQuestion={1} results = {results}/> */}
+    
     </div>
   )
 }

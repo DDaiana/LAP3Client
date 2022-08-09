@@ -21,12 +21,23 @@ export function difficultyAction(diff) {
     }
 }
 
+export function questionAction(){
+    return{
+        type: "ADD",
+        payload: 1
+    }
+}
+
 export async function fetchQuiz(category, difficulty, number){
         console.log("INSIDE FETCH FUNCTION")
+        console.log(category, difficulty, number)
         const url = `https://opentdb.com/api.php?amount=${number}&category=${category}&difficulty=${difficulty}&type=multiple`
         try {
             let data = await axios.get(url)
+            console.log(url)
+            console.log(data)
             const quizData = data.data.results
+            console.log(quizData)
             return quizData
            
         } catch (err) {
