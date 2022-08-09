@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate} from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { categoryAction } from "../../actions";
+import {Username} from '../../components/Username'
 
 export default function Categories() {
     // let [category, setCategory] = useState("");
