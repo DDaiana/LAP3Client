@@ -54,7 +54,7 @@ export default function Game() {
 
   return (
     <div>Game
-      {isLoaded == true ? 
+      {isLoaded === true ? 
        runGame():
       null}
       {/* {results.map(item => item.question)} */}

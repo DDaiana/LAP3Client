@@ -1,15 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { questionAction, answerListAction, answerCorrectAction } from "../../actions";
+import { questionAction, answerListAction, answerCorrectAction, responseAction } from "../../actions";
 
 export default function Question({currentQuestion, results}) {
-    console.log("RESULTS INSIDE QUESTION")
-    console.log(results)
-    console.log("RESULTS INSIDE QUESTION")
+
+    let color = "";
 
     const answerList = useSelector(state => state.answerReducer.list);
 
     const answerCorrect = useSelector(state => state.answerReducer.correct);
+
+    const currentResponse = useSelector(state => state.responseReducer.correct);
+
+    const secondsLeft = useSelector(state => state.timeReducer.time);
+
+    console.log("ACCESSING TIME FROM QUESTION ," , secondsLeft)
+
+    console.log(currentResponse)
 
     const dispatch = useDispatch();
 
@@ -29,12 +36,22 @@ export default function Question({currentQuestion, results}) {
         dispatch(answerListAction(randomAnswers))
         dispatch(answerCorrectAction(results[currentQuestion-1].correct_answer))
         setIsLoaded(true)
+        let buttonEnable = document.getElementsByClassName('response')
+        buttonEnable = Array.from(buttonEnable)
+        buttonEnable.forEach(item => {
+            item.disabled = false
+            item.style.background = ""
+        })
+
+
         // document.querySelectorAll('button').disabled = 'false';
-
-
-    
     },[currentQuestion])
 
+
+
+    if(secondsLeft == 0){
+
+    }
     console.log(answerList)
     console.log(answerCorrect)
     // console.log("INCORRECT  ",results[currentQuestion-1].incorrect_answers)
@@ -48,14 +65,23 @@ export default function Question({currentQuestion, results}) {
 
     const handleClick = (e) => {
         e.preventDefault();
+        console.log("CLICKED  ", color)
         console.log(e.target.innerText)
         console.log(results[currentQuestion-1].correct_answer)
-        const buttonConst = document.querySelectorAll('button')
+        let buttonConst = document.getElementsByClassName('response')
+        buttonConst = Array.from(buttonConst)
         buttonConst.forEach(item => item.disabled = false)
+        document.getElementById(e.target.innerText).style.background='blue';
+        buttonConst.forEach(item => {
+            if(item.innerText !== e.target.value){
+                item.disabled= true
+            }
+        })
         // document.getElementById(e.target.innerText).disabled = true;
-        if (e.target.innerText === results[currentQuestion-1].correct_answer){
+        dispatch(responseAction(e.target.innerText))
+        if (currentResponse === results[currentQuestion-1].correct_answer){
             console.log("CORRECT")
-            dispatch(questionAction());
+
         } else{
             console.log("INCORRECT")
         }
@@ -93,12 +119,13 @@ export default function Question({currentQuestion, results}) {
                 </div>
                 <div className='question-text'>{results[currentQuestion - 1].question}</div>
             </div>
+            {console.log("COLOR IS ", color)}
             <div className='answer-section'>
                     {answerList.map((item) => (
-                        <button id={item} onClick={handleClick}>{item}</button>
+                        <button className = "response" style={{backgroundColor: color}} id={item} onClick={handleClick}>{item}</button>
                     ))}
             </div>
-            {canSplit ? <button id="split" onClick={handleSplit}>"50-50"</button>: null}
+            {canSplit ? <button className = "split" id="split" onClick={handleSplit}>"50-50"</button>: null}
         </>
         )
     }

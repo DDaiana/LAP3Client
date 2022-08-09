@@ -1,7 +1,9 @@
 import React from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect, useRef } from 'react';
+import { questionAction, timeAction } from '../../actions'
 
 let color = '#3E98C7';
 
@@ -9,8 +11,14 @@ let color = '#3E98C7';
 export default function Timer() {
     const [isPlayed, setIsPlayed] = useState(false);
     const [mode, setMode] = useState('safe');
-    const [secondsLeft, setSecondsLeft] = useState(15)
+    // const [secondsLeft, setSecondsLeft] = useState(15)
+    const secondsLeft = useSelector(state => state.timeReducer.time);
+    console.log(secondsLeft)
+    const currentQuestion = useSelector(state => state.questionReducer.question);
 
+    const dispatch = useDispatch();
+
+  
     const secondsLeftRef = useRef(secondsLeft);
     // const isPlayedRef = useRef(isPlayed);
     const modeRef = useRef(mode);
@@ -28,11 +36,13 @@ export default function Timer() {
 
     function tick() {
         secondsLeftRef.current--;
-        setSecondsLeft(secondsLeftRef.current)
+        dispatch(timeAction(secondsLeftRef.current))
+        // setSecondsLeft(secondsLeftRef.current)
     }
 
     function initTimer() {
-        setSecondsLeft(15);
+        dispatch(timeAction(15))
+        // setSecondsLeft(15);
     }
 
     useEffect(() => {
@@ -44,7 +54,11 @@ export default function Timer() {
                 color = '#D73949';
             }
             if (secondsLeftRef.current === 0) {
-                return
+                dispatch(questionAction())
+                secondsLeftRef.current = 15
+                dispatch(timeAction(15))
+                color = '#3E98C7';
+                tick()
             } else {
                 tick();
             };

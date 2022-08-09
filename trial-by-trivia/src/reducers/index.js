@@ -1,3 +1,5 @@
 export { default as mainReducer } from './mainReducer'
 export { default as questionReducer } from './questionReducer'
 export { default as answerReducer } from './answerReducer'
+export { default as responseReducer } from './responseReducer'
+export { default as timeReducer } from './timeReducer'
