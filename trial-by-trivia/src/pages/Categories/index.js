@@ -7,8 +7,8 @@ export default function Categories() {
     // let [category, setCategory] = useState("");
 
     const category = useSelector((state) => {
-      console.log("STATE IS ",state)
-      return state.category});
+      console.log("STATE IS ",state.mainReducer.category)
+      return state.mainReducer.category});
     const dispatch = useDispatch();
     // const loading = useSelector((state) => state.loading);
 
