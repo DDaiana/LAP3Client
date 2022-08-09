@@ -15,6 +15,8 @@ export default function Question({currentQuestion, results}) {
 
     let [isLoaded, setIsLoaded] = useState(false)
 
+    let [canSplit, setCanSplit] = useState(true)
+
     useEffect(()=>{
         console.log("INCORRECT  ",results[currentQuestion-1].incorrect_answers)
         let answers = results[currentQuestion-1].incorrect_answers 
@@ -27,6 +29,8 @@ export default function Question({currentQuestion, results}) {
         dispatch(answerListAction(randomAnswers))
         dispatch(answerCorrectAction(results[currentQuestion-1].correct_answer))
         setIsLoaded(true)
+        // document.querySelectorAll('button').disabled = 'false';
+
 
     
     },[currentQuestion])
@@ -46,6 +50,8 @@ export default function Question({currentQuestion, results}) {
         e.preventDefault();
         console.log(e.target.innerText)
         console.log(results[currentQuestion-1].correct_answer)
+        const buttonConst = document.querySelectorAll('button')
+        buttonConst.forEach(item => item.disabled = false)
         // document.getElementById(e.target.innerText).disabled = true;
         if (e.target.innerText === results[currentQuestion-1].correct_answer){
             console.log("CORRECT")
@@ -56,6 +62,26 @@ export default function Question({currentQuestion, results}) {
         // dispatch(questionAction());
         // e.preventDefault();
         // setIsClicked(true)
+    }
+
+    const handleSplit = () => {
+
+        if (canSplit == true){
+            const filteredAnswers = answerList.filter(item => item != answerCorrect)
+            const filteredRandomisedAnswers = filteredAnswers.sort(function () {
+                return Math.random() - 0.5;
+            });
+            filteredRandomisedAnswers.pop()
+            console.log(filteredRandomisedAnswers)
+            for (let i=0; i<filteredRandomisedAnswers.length; i++){
+                console.log("FIRST", filteredRandomisedAnswers[i])
+                document.getElementById(filteredRandomisedAnswers[i]).disabled = 'true';
+                console.log(filteredRandomisedAnswers[i])
+                setCanSplit(false)
+            } 
+        } else{
+            console.log("CANNOT USE")
+        }
     }
 
     const runQuestion = () => {
@@ -72,6 +98,7 @@ export default function Question({currentQuestion, results}) {
                         <button id={item} onClick={handleClick}>{item}</button>
                     ))}
             </div>
+            {canSplit ? <button id="split" onClick={handleSplit}>"50-50"</button>: null}
         </>
         )
     }
