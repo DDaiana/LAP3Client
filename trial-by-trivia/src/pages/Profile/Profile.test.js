@@ -9,9 +9,9 @@
     })
 
    test('It displays a header with appropriate text', () => {
-    //  throw "not implemeted" 
-    const heading = screen.getByRole("header");
-    expect(heading).toBeInTheDocument();
+     throw "not implemeted" 
+    // const heading = screen.getByTitle("Header");
+    // expect(heading).toBeInTheDocument();
     // expect(heading.textContent).toEqual("test");  
    });
  })

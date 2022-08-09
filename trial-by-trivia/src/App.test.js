@@ -10,7 +10,7 @@ describe ("App", () => {
   test('It displays a header with appropriate text', () => {
     
     throw "not implemeted" 
-    // const heading = screen.getByE("heading");
+    // const heading = screen.getByTitle("heading");
     // expect(heading).toBeInTheDocument();
     // expect(heading.textContent).toEqual("test"); 
   });

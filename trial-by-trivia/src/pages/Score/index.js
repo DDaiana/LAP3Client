@@ -8,7 +8,7 @@ export default function Score() {
     }
   return (
     <div>Score
-        <button onClick={navigateToProfile}>Exit game</button>
+        <button data-testid="button" onClick={navigateToProfile}>Exit game</button>
     </div>
   )
 }

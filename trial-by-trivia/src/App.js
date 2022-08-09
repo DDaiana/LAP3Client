@@ -6,7 +6,7 @@ import { Routes, Route} from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header" title='figure'>
         <Routes>
               <Route path="/" element={<Profile />}> </Route>
               <Route path="/categories" element={<Categories />}> </Route>

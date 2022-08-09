@@ -12,7 +12,7 @@ export default function Profile() {
 
   return (
     <div>
-        <h2 role="header">Profile</h2>
+        <h2 title="Header">Profile</h2>
         <Usercard />
         <button>Leader Board</button>
         <button onClick={navigateToCategories}>Start game</button>
