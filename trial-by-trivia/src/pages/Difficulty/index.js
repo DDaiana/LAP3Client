@@ -41,9 +41,9 @@ export default function Difficulty() {
 
   return (
     <div>Difficulty
-    <h2>Difficulty</h2>
+    <h2 title='HeaderDifficulty'>Difficulty</h2>
     {difficulty_list.map(item => <button value = {item.value} onClick={(e) => handleDifficulty(e)}>{item.name}</button>)}
-    <h2>Number of Questions</h2>
+    <h2 title='HeaderNoQuestions'>Number of Questions</h2>
     <form onSubmit={handleNumber}>
       <select>
         {number_list.map(item => <option value={item.value}>{item.name}</option>)}
