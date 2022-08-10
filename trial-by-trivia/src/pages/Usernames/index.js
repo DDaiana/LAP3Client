@@ -14,7 +14,8 @@ export default function Usernames() {
   return (
     <div>
         <h2>Set Username</h2>
-        <Username/>
+        {/* gieves error - "could not find react-redux context value;" for testing */}
+        {/* <Username/> */}
         <button onClick={navigateToCategories}>Start game</button>
         
     </div>
