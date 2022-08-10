@@ -6,7 +6,7 @@ export default function Question({currentQuestion, results}) {
 
     let color = "";
 
-    [scoreTime, ]
+    // [scoreTime, ]
     const answerList = useSelector(state => state.answerReducer.list);
 
     const answerCorrect = useSelector(state => state.answerReducer.correct);
@@ -70,8 +70,8 @@ export default function Question({currentQuestion, results}) {
 
     const handleClick = (e) => {
         e.preventDefault();
-        time += secondsLeft;
-        console.log("TIME ",time)
+        // time += secondsLeft;
+        // console.log("TIME ",time)
         console.log("CLICKED  ", color)
         console.log(e.target.innerText)
         console.log(results[currentQuestion-1].correct_answer)

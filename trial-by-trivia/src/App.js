@@ -6,7 +6,7 @@ import { Routes, Route} from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <header className="App-header" title='figure'>
+      <header className="App-header">
         <Routes>
               <Route path="/" element={<Home />}> </Route>
               <Route path="/usernames" element={<Usernames />}> </Route>

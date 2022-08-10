@@ -1,26 +1,23 @@
 
- import { screen } from '@testing-library/react';
+ import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
  import Score from './index';
  
  describe ("Score", () => {
 
+  // shows error with render forbiden in the context of beforeEach
   //  beforeEach(() => {
-  //   render(<Score />);
+  //   render(
+  //     <BrowserRouter>
+  //        <Score />
+  //     </BrowserRouter>
+  //   );
   //  })
-  
-  const MockScore =() => {
-    return (
-      <BrowserRouter>
-      <Score/>
-      </BrowserRouter>
-    )
-  }
 
-   test(`The user is redirected to the Profile page if the "Exit game" button is clicked`, async () => {  
-    render ( <MockScore/>)      
-    const exitButton = screen.getByText(/Exit game/i);
-    expect(exitButton).toBeInTheDocument();
+   test(`There is an "Exit game" button`, async () => {  
+    render (<BrowserRouter><Score/></BrowserRouter>);
+    const exitButton = screen.getByRole("button", { "name": "Exit game" });
+    expect(exitButton).toBeTruthy();
 })
  })
  
