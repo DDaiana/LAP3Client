@@ -1,8 +1,18 @@
-import { render, screen } from '@testing-library/react';
+import {  screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+describe ("App", () => {
+
+  beforeEach(() => {
+    render(<App />);
+})
+
+  test('It displays a header with appropriate text', () => {
+    
+    throw "not implemeted" 
+    // const heading = screen.getByE("heading");
+    // expect(heading).toBeInTheDocument();
+    // expect(heading.textContent).toEqual("test"); 
+  });
+})
+
