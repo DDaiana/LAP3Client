@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-export const Username = () => {
+const Username = () => {
     const dispatch = useDispatch();
     const playerCount = useSelector((state) => state.mainReducer.playerCount);
     const player1 = useSelector((state) => state.mainReducer.player1.username);
@@ -40,7 +40,7 @@ export const Username = () => {
 
 
     return (
-        <>
+        <div title='Header'>
             {bool ?
                 <form className="add-form" onSubmit={updateUsername}>
                     {playerCount === 1 ? (
@@ -89,6 +89,7 @@ export const Username = () => {
                             <p id="username1soloplay" className="player1Username">player 1: {player1}</p>)}
 
                 </div>}
-        </>
+        </div>
     );
 };
+export default Username;
