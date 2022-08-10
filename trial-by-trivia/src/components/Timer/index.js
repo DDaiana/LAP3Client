@@ -81,7 +81,7 @@ export default function Timer() {
     // console.log("This is the percentage", percentage);
 
     return (
-        <div>
+        <div title='Header'>
             <CircularProgressbar value={percentage} text={seconds} styles={buildStyles( {
                 strokeLinecap: 'butt',
                 pathColor: color,
