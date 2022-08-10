@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 // import './style.css'
 
-export const PlayerCount = () => {
+const PlayerCount = () => {
 
     let navigate = useNavigate();
     const routeChange = (path) => {
@@ -23,7 +23,7 @@ export const PlayerCount = () => {
       <>
   
         <div className="player-count-container">
-          <h2 className='playercountH2'>Select Player Count</h2>
+          <h2 title='Header' className='playercountH2'>Select Player Count</h2>
           <div className="player-count-btns">
             <button id='updatePlayerbtn' className='coolbutton' onClick={() => updatePlayers(1)}>One</button>
             <button id='updatePlayerbtn' className='coolbutton' onClick={() => updatePlayers(2)}>Two</button>
@@ -34,3 +34,4 @@ export const PlayerCount = () => {
     )
   }
   
+  export default PlayerCount;

@@ -37,7 +37,7 @@ export default function Categories() {
   
   return (
     <div>Categories
-      <h2>Category</h2>
+      <h2 title='Category'>Category</h2>
       {category_list.map(item => <button value = {item.value} onClick={(e) => handleCategory(e)}>{item.name}</button>)}
       <button onClick={(e) => handleCategory(e)}>Random</button>
     </div>
