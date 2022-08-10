@@ -3,6 +3,7 @@ import { useNavigate} from 'react-router-dom';
 import { useSelector } from "react-redux";
 import {fetchQuiz} from '../../actions';
 import  Question  from '../../components/Question';
+import Timer from '../../components/Timer';
 
 
 export default function Game() {
@@ -41,7 +42,11 @@ export default function Game() {
 
     const runGame = () => {
       return(
-      <Question currentQuestion={currentQuestion} results = {results}/>)
+      <>
+      <Timer />
+      <Question currentQuestion={currentQuestion} results = {results}/>
+      </>
+      )
     }
 
 
@@ -49,7 +54,7 @@ export default function Game() {
 
   return (
     <div>Game
-      {isLoaded == true ? 
+      {isLoaded === true ? 
        runGame():
       null}
       {/* {results.map(item => item.question)} */}

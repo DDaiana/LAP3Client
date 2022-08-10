@@ -28,6 +28,34 @@ export function questionAction(){
     }
 }
 
+export function answerListAction(answers){
+    return{
+        type: "LIST",
+        payload: answers
+    }
+}
+
+export function answerCorrectAction(answerCorrect){
+    return{
+        type: "CORRECT",
+        payload: answerCorrect
+    }
+}
+
+export function responseAction(response){
+    return{
+        type: "SUBMIT",
+        payload: response
+    }
+}
+
+export function timeAction(time){
+    return{
+        type: "TIME",
+        payload: time
+    }
+}
+
 export async function fetchQuiz(category, difficulty, number){
         console.log("INSIDE FETCH FUNCTION")
         console.log(category, difficulty, number)
