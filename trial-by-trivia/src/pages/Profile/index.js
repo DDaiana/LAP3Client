@@ -15,8 +15,7 @@ export default function Profile() {
         <h2 title="Header">Profile</h2>
         <Usercard />
         <button>Leader Board</button>
-        <button onClick={navigateToCategories}>Start game</button>
-        
+        <button onClick={navigateToCategories}>Start game</button>        
     </div>
   )
 }

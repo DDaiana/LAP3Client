@@ -16,14 +16,14 @@
  
     test(`There is an "Start game" button`, async () => {  
      render (<BrowserRouter><Usernames/></BrowserRouter>);
-     const exitButton = screen.getByRole("button", { "name": "Start game" });
-     expect(exitButton).toBeTruthy();
+     const startButton = screen.getByRole("button", { "name": "Start game" });
+     expect(startButton).toBeTruthy();
  })
 
      test(`There is a title`, async () => {  
-        render (<BrowserRouter><Usernames/></BrowserRouter>);
-        const exitButton = screen.getByText(/Set Username/i);
-    expect(exitButton).toBeTruthy();
+      render (<BrowserRouter><Usernames/></BrowserRouter>);
+      const title = screen.getByTitle("Header");
+      expect(title).toBeTruthy();
  })
 
 
