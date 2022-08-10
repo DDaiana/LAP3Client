@@ -33,6 +33,7 @@ export default function Home() {
 
   return (
     <div>
+      {/* gives error - "could not find react-redux context value;" for testing */}
       <PlayerCount />
       <div>
         < button onClick={() => routeChange('/leaderboard')}> Leaderboard</button >

@@ -2,8 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { useNavigate} from 'react-router-dom';
 import { useSelector } from "react-redux";
 import {fetchQuiz} from '../../actions';
-import  Question  from '../../components/Question';
-import Timer from '../../components/Timer';
+import  {Question, Timer}  from '../../components';
 
 
 export default function Game() {

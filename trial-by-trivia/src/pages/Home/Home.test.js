@@ -1,11 +1,14 @@
 
- import { screen } from '@testing-library/react';
+ import { screen, render } from '@testing-library/react';
+ import { BrowserRouter } from 'react-router-dom';
  import Home from '.';
  
  describe ("Home", () => {
-   test('renders learn react link', () => {
-     throw "not implemeted"  
-   });
+  test(`There is an "Leader Board" button`, async () => {  
+    render (<BrowserRouter><Home/></BrowserRouter>);
+    const leaderBoardButton = screen.getByRole("button", { "name": "Leader Board" });
+    expect(leaderBoardButton).toBeTruthy();
+})
  })
  
  
